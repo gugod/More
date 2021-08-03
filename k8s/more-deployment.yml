@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: more-deployment
+  labels:
+    app: more
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: more
+  template:
+    metadata:
+      labels:
+        app: more
+    spec:
+      containers:
+      - name: more
+        image: gugod/more:latest
+        ports:
+        - containerPort: 3000
