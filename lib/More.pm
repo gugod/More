@@ -9,18 +9,6 @@ use Acme::Lingua::ZH::Remix;
 use Encode qw(encode_utf8);
 use XML::RSS;
 
-get '/' => sub {
-    template 'index';
-};
-
-get '/api' => sub {
-    template 'api';
-};
-
-get '/leanback' => sub {
-    template 'leanback', {}, { layout => undef };
-};
-
 my %remixer = ();
 {
     for my $corpus_file (<corpus/*.txt>) {
@@ -50,6 +38,19 @@ my %remixer = ();
     }
 }
 my @corpus = keys %remixer;
+
+get '/' => sub {
+    template 'index';
+};
+
+get '/api' => sub {
+    template 'api';
+};
+
+get '/leanback' => sub {
+    template 'leanback', {}, { layout => undef };
+};
+
 
 get '/sentences.json' => sub {
     my $self = shift;
