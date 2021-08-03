@@ -65,7 +65,7 @@ my @tweets = sort { length($b) <=> length($a) } uniq map {
     s/,+/，/g;
     $_
 } grep {
-    /\p{Han}{2}/ && /\p{Punct}/ && length($_) > 6
+    /\p{Han}{6}/
 } map {
     split /(?:\r?\n)+/
 } (@new_tweets, @old_tweets);
