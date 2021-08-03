@@ -5,7 +5,6 @@ use warnings;
 use utf8;
 
 use Getopt::Long qw(GetOptions);
-use Encode::HanConvert qw(simp_to_trad);
 
 use IO::All;
 use List::MoreUtils qw(uniq);
