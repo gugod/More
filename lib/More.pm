@@ -7,6 +7,7 @@ use strict;
 
 use Acme::Lingua::ZH::Remix;
 use Encode qw(encode_utf8);
+use String::Trim qw(trim);
 use XML::RSS;
 
 my %remixer = ();
@@ -16,7 +17,10 @@ my %remixer = ();
 
         my %lines;
         while (my $line = <FH>) {
-            chomp($line);
+            trim($line);
+            $line =~ s/\A\p{Other_Punctuation}//;
+            next if $line =~ /\A\s*\z/;
+
             if ($line !~ /\p{Punct}\z/) {
                 for my $p ("、", "，", "。", "；") {
                     $lines{$line . $p} = 1;

@@ -13,3 +13,4 @@ requires 'YAML' => 0;
 requires 'common::sense' => 0;
 requires 'IO::All' => 0;
 requires 'JSON' => 0;
+requires 'String::Trim' => 0;
