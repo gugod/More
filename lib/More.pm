@@ -37,7 +37,28 @@ my %remixer = ();
         $remixer{$name} = $remixer;
     }
 }
-my @corpus = keys %remixer;
+
+sub random_sentences {
+    my ($n, $corpus, $min, $max) = @_;
+    my @sentences;
+
+    if ($corpus) {
+        my $remixer = $remixer{$corpus};
+        for (1..$n) {
+            my $s = $remixer->random_sentence(min => $min, max => $max);
+            push @sentences, $s;
+        }
+    }
+    else {
+        my @corpus = keys %remixer;
+        for (1..$n) {
+            my $remixer = $remixer{ $corpus[int(rand() * @corpus)] };
+            my $s = $remixer->random_sentence(min => $min, max => $max);
+            push @sentences, $s;
+        }
+    }
+    return @sentences;
+}
 
 get '/' => sub {
     template 'index';
@@ -50,7 +71,6 @@ get '/api' => sub {
 get '/leanback' => sub {
     template 'leanback', {}, { layout => undef };
 };
-
 
 get '/sentences.json' => sub {
     my $self = shift;
@@ -69,15 +89,7 @@ get '/sentences.json' => sub {
     $min = 0   if $min < 0;
     $max = 500 if $max > 500;
 
-    my @sentences;
-    for(1..$n) {
-        unless ($corpus) {
-            $remixer = $remixer{ $corpus[int(rand() * @corpus)] };
-        }
-
-        my $s = $remixer->random_sentence(min => $min, max => $max);
-        push @sentences, $s;
-    }
+    my @sentences = random_sentences($n, $corpus, $min, $max);
 
     my $json_text = to_json({ sentences => \@sentences });
     if ($cb) {
