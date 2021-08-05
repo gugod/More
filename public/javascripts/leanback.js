@@ -1,11 +1,32 @@
 (function() {
-    var change, changing, load_background, load_text, mode, modes;
+    var change, changing, load_background, load_text, mode, modes, next_background_image_url;
 
     modes = ["kitten", "picsum", "lorempixel", "placeimg", "loremflickr"];
 
     mode = "kitten";
 
     changing = 0;
+
+    next_background_image_url = function() {
+        var grey, img, random_height, random_width, url;
+        random_height = window.innerHeight || Math.round(Math.random() * 460 + 500);
+        random_width = window.innerWidth || Math.round(Math.random() * 760 + 200);
+        grey = "";
+        if (Math.random() > 0.5) grey = "g";
+        if (mode === "kitten") {
+            url = "https://placekitten.com/" + grey + "/" + random_width + "/" + random_height;
+        } else if (mode === "lorempixel") {
+            url = "https://lorempixel.com/" + grey + "/" + random_width + "/" + random_height;
+        } else if (mode === "picsum") {
+            url = "https://picsum.photos/" + random_width + "/" + random_height;
+        } else if (mode === "placeimg") {
+            url = "https://placeimg.com/" + random_width + "/" + random_height;
+        } else if (mode === "loremflickr") {
+            url = "https://loremflickr.com/" + random_width + "/" + random_height;
+        }
+
+        return url;
+    };
 
     change = function() {
         if (changing === 3) {
@@ -34,22 +55,11 @@
     };
 
     load_background = function() {
-        var grey, img, random_height, random_width, url;
+        var img, random_height, random_width, url;
         random_height = window.innerHeight || Math.round(Math.random() * 460 + 500);
         random_width = window.innerWidth || Math.round(Math.random() * 760 + 200);
-        grey = "";
-        if (Math.random() > 0.5) grey = "g";
-        if (mode === "kitten") {
-            url = "https://placekitten.com/" + grey + "/" + random_width + "/" + random_height;
-        } else if (mode === "lorempixel") {
-            url = "https://lorempixel.com/" + grey + "/" + random_width + "/" + random_height;
-        } else if (mode === "picsum") {
-            url = "https://picsum.photos/" + random_width + "/" + random_height;
-        } else if (mode === "placeimg") {
-            url = "https://placeimg.com/" + random_width + "/" + random_height;
-        } else if (mode === "loremflickr") {
-            url = "https://loremflickr.com/" + random_width + "/" + random_height;
-        }
+
+        url = next_background_image_url();
 
         if (url) {
             url += "?random=" + Math.random();
