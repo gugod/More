@@ -6,7 +6,7 @@ $(function() {
         if ($('#tweet span').text()) {
             var status = "長官勉勵我們：" + $('#tweet').text();
             var status_with_url = encodeURIComponent(status + ' / ' + document.title + ' ' + location.href);
-            $("a.twitter.tools").attr("href", "https://twitter.com/?status="+status_with_url);
+            $("a.twitter.tools").attr("href", "https://twitter.com/intent/tweet?text=" + encodeURIComponent(status + " / " + document.title) + "&url=" + encodeURIComponent(location.href));
             $("a.plurk.tools").attr("href", "http://www.plurk.com/?status="+status_with_url);
             if (t) {
                 clearInterval(t);
