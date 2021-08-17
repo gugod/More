@@ -90,12 +90,6 @@ a:hover, a:active {
     text-indent: -9999em;
 }
 
-.facebook-sharer {
-    position: absolute;
-    right: 0;
-    top: 5px;
-}
-
 #header .fb_share_count_nub_top {
     background: url(../images/89zgzk50.png) left top no-repeat;
 }

@@ -10,7 +10,6 @@
 <div id="wrapper">
     <div id="header">
         <h1><a href="/">MoreText.js: 一用就愛上的中文假文產生器</a></h1>
-        <div class="facebook-sharer"><a name="fb_share" type="box_count" share_url="http://more.handlino.com/" href="http://www.facebook.com/sharer.php">分享</a></div>
     </div>
     <div id="container" class="clearfix">
         <% content %>
