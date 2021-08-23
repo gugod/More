@@ -139,6 +139,7 @@ get '/image/:seed/:size.jpg' => sub {
     $seed = (time() . rand()) if $seed eq '*';
 
     my ($width, $height) = split "x", params->{size};
+    pass unless $width <= 1024 && $height <= 1024;
 
     my $blob;
     Acme::DreamyImage
