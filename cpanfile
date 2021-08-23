@@ -1,6 +1,7 @@
 requires 'Plack::Request' => 0.9974;
 requires 'Dancer' => '1.2000';
 requires 'Acme::Lingua::ZH::Remix' => '0.99';
+requires 'Acme::DreamyImage' => 0;
 requires 'Encode::HanConvert' => 0;
 requires 'HTML::Entities' => 0;
 requires 'HTML::TreeBuilder::Select' => 0;

@@ -6,6 +6,7 @@ use utf8;
 use strict;
 
 use Acme::Lingua::ZH::Remix;
+use Acme::DreamyImage;
 use Encode qw(encode_utf8);
 use String::Trim qw(trim);
 use XML::RSS;
@@ -126,6 +127,35 @@ get '/sentences.rss' => sub {
     }
 
     return encode_utf8($rss->as_string);
+};
+
+# */image/random/256x256jpg
+get '/image/:seed/:size.jpg' => sub {
+    my $params = shift;
+    pass unless (params->{size} =~ /^[1-9][0-9]+x[1-9][0-9]+$/);
+
+    my $seed = params->{seed};
+    pass unless $seed eq '*' || $seed =~ /^[0-9a-f]+$/;
+    $seed = (time() . rand()) if $seed eq '*';
+
+    my ($width, $height) = split "x", params->{size};
+
+    my $blob;
+    Acme::DreamyImage
+        ->new( seed => $seed,
+               width  => 384,
+               height => 384 )
+        ->random_image()
+        ->scale( xpixels => $width,
+                 ypixels => $height )
+        ->crop( top => 0, left => 0,
+                width => $width, height => $height )
+        ->write( data => \$blob,
+                 type => "jpeg" );
+
+
+    content_type 'jpg';
+    return $blob;
 };
 
 true;
