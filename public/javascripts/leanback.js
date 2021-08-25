@@ -36,6 +36,7 @@
         } else if (mode === "dreamyimage") {
             url = "https://more.iter.tw/image/*/" + random_width + "x" + random_height + ".jpg";
         }
+        mode = modes[(1 + modes.indexOf(mode)) % modes.length];
 
         return url;
     };
@@ -47,7 +48,6 @@
             $("#screen p").html($("#loader p").html());
             changing = 0;
         } else if (changing === 0) {
-            mode = modes[(1 + modes.indexOf(mode)) % modes.length];
             changing = 1;
             load_text();
             load_background();
@@ -67,21 +67,21 @@
     };
 
     load_background = function() {
-        var img, random_height, random_width, url;
-        random_height = window.innerHeight || Math.round(Math.random() * 460 + 500);
-        random_width = window.innerWidth || Math.round(Math.random() * 760 + 200);
+        var url = next_background_image_url() + "?random=" + Math.random();
+        var img = new Image();
 
-        url = next_background_image_url();
+        var reload = setTimeout(function () {
+            img.parentNode.removeChild(img);
+            load_background();
+        }, 9000);
 
-        if (url) {
-            url += "?random=" + Math.random();
-            img = new Image();
-            $(img).on("load", function() {
-                return changing = changing + 1;
-            });
-            $("#loader").append(img);
-            return img.src = url;
-        }
+        $(img).on("load", function() {
+            clearTimeout(reload);
+            return changing = changing + 1;
+        });
+
+        $("#loader").append(img);
+        img.src = url;
     };
 
     jQuery(function() {
