@@ -1,16 +1,28 @@
 (function() {
     var change, changing, load_background, load_text, mode, modes, next_background_image_url;
 
-    modes = ["kitten", "picsum", "lorempixel", "placeimg", "loremflickr"];
+    modes = ["kitten", "picsum", "lorempixel", "loremflickr", "dreamyimage"];
 
     mode = "kitten";
 
     changing = 0;
 
     next_background_image_url = function() {
-        var grey, img, random_height, random_width, url;
-        random_height = window.innerHeight || Math.round(Math.random() * 460 + 500);
-        random_width = window.innerWidth || Math.round(Math.random() * 760 + 200);
+        var grey, img, random_height, random_width, ratio, url;
+        random_height = window.innerHeight || 600;
+        random_width = window.innerWidth || 800;
+
+        if (random_width > 800) {
+            ratio = 800 / random_width;
+            random_width = 800;
+            random_height = Math.round(ratio * random_height);
+        }
+        if (random_height > 800) {
+            ratio = 800 / random_height;
+            random_height = 800;
+            random_width = Math.round(ratio * random_width);
+        }
+
         grey = "";
         if (Math.random() > 0.5) grey = "g";
         if (mode === "kitten") {
@@ -19,10 +31,10 @@
             url = "https://lorempixel.com/" + grey + "/" + random_width + "/" + random_height;
         } else if (mode === "picsum") {
             url = "https://picsum.photos/" + random_width + "/" + random_height;
-        } else if (mode === "placeimg") {
-            url = "https://placeimg.com/" + random_width + "/" + random_height;
         } else if (mode === "loremflickr") {
             url = "https://loremflickr.com/" + random_width + "/" + random_height;
+        } else if (mode === "dreamyimage") {
+            url = "https://more.iter.tw/image/*/" + random_width + "x" + random_height + ".jpg";
         }
 
         return url;
