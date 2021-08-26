@@ -3,17 +3,6 @@
         <h2 class="lipsum(1,16)"></h2><div class="lipsum(6)"></div>
     </div>
     <div class="section">
-        <script type="text/javascript"><!--
-        google_ad_client = "pub-0032217611776345";
-        /* moretext, 468x60 */
-        google_ad_slot = "3251411456";
-        google_ad_width = 468;
-        google_ad_height = 60;
-        //-->
-        </script>
-        <script type="text/javascript"
-        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
         <h2>長官勉勵：</h2>
         <p id="tweet">「<span class="lipsum"></span>」</p>
         <p>
@@ -77,17 +66,6 @@
     </div>
 </div>
 <div id="sidebar">
-    <script type="text/javascript"><!--
-    google_ad_client = "pub-0032217611776345";
-    /* 250x250, moretext */
-    google_ad_slot = "1161635634";
-    google_ad_width = 250;
-    google_ad_height = 250;
-    //-->
-    </script>
-    <script type="text/javascript"
-    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-    </script>
     <div class="section">
         <h3>這些文字到底是什麼意思？</h3>
         <p>是什麼意思並不重要，因為它們全是自動產生出來的。是我們在各處尋找公有領域的文本做為語料，打亂之後重新組合的產物。</p>
@@ -107,17 +85,5 @@
             <li>"MoreText 是一個帥氣的服務，我用了三分鐘後，就再也離不開它了，而且，它產生的語料庫有時很好笑..." - <a href="http://twitter.com/sillyleo" target="_blank">Leo</a></li>
             <li>"MoreText 讓測試網頁文字寬容度更為方便，且逗趣的文字讓設計過程增添不少樂趣。" - <a href="http://twitter.com/evenwu" target="_blank">EvenWu</a></li>
         </ul>
-    </div>
-    <div class="section">
-        <h2>勉勵我們</h2>
-        <p>本服務由<a href="http://handlino.com">和多股份有限公司</a>提供。若覺得這個小服務還不賴，可以點擊這個 Paypal 捐款按鈕來贊助 MoreText 這個計畫。對於捐款者，我們獻上最高的感激。有任何建議，請<a href="http://handlino.com/contact">聯絡我們</a>，如果想知道我們的最新動態，可以追蹤<a href="http://twitter.com/handlino/">我們的 Twitter 帳號</a>。</p>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <p>
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="98VBU77SX65ES">
-                <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                <img alt="" border="0" src="https://www.paypal.com/zh_HK/i/scr/pixel.gif" width="1" height="1">
-            </p>
-        </form>
     </div>
 </div>
