@@ -266,26 +266,3 @@ a.plurk {
         -webkit-transform: translate(-20px,0) scale(1.414) rotate(-3deg);
     }
 }
-
-#recent-tweets a {
-    color: #000;
-}
-#recent-tweets li {
-    margin: 0 0 10px 0;
-    padding: 5px;
-}
-#recent-tweets a:nth-child(2n) li {
-    background: #eee;
-}
-#recent-tweets li img {
-    float: left;
-    margin: 0 5px 5px 0;
-
-    display: block;
-}
-#recent-tweets li:hover img {
-    -webkit-animation-name: avatarrotate;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-}
