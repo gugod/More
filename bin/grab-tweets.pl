@@ -7,7 +7,7 @@ use utf8;
 use Getopt::Long qw(GetOptions);
 
 use IO::All;
-use List::MoreUtils qw(uniq);
+use List::MoreUtils qw(uniq apply);
 use Twitter::API;
 use URI;
 use XML::Feed;
@@ -58,12 +58,11 @@ my @new_tweets = map { grab_tweets($_) } @query;
 
 my @old_tweets = $app_root->catfile("corpus", "tweets.txt")->assert->utf8->chomp->getlines;
 
-my @tweets = sort { length($b) <=> length($a) } uniq map {
+my @tweets = sort { length($b) <=> length($a) } uniq apply {
     s/\t/ /g;
     s/!+/！/g;
     s/\?+/？/g;
     s/,+/，/g;
-    $_
 } grep {
     /\p{Han}{6}/
 } map {
