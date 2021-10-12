@@ -47,19 +47,18 @@ sub grab_tweets {
     } @{$r->{statuses}};
 }
 
-my @query = qw(咖啡 不賴);
+my @query = apply {
+    utf8::decode($_) unless utf8::is_utf8($_);
+} @ARGV;
 
-for my $q (@ARGV) {
-    utf8::decode($q) unless utf8::is_utf8($q);
-    unshift @query, $q;
-}
+die "Need some search terms.\n" unless @query;
 
 my @new_tweets = map { grab_tweets($_) } @query;
 
 my @old_tweets = $app_root->catfile("corpus", "tweets.txt")->assert->utf8->chomp->getlines;
 
 my @tweets = sort { length($b) <=> length($a) } uniq apply {
-    s/\t/ /g;
+    s/\s+/ /g;
     s/!+/！/g;
     s/\?+/？/g;
     s/,+/，/g;
