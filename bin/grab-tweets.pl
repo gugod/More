@@ -12,6 +12,7 @@ use Twitter::API;
 use URI;
 use XML::Feed;
 use YAML;
+use Text::Util::Chinese qw(looks_like_simplified_chinese);
 
 my %opts;
 GetOptions(
@@ -63,7 +64,7 @@ my @tweets = sort { length($b) <=> length($a) } uniq apply {
     s/\?+/？/g;
     s/,+/，/g;
 } grep {
-    /\p{Han}{6}/
+    /\p{Han}{6}/ && (! looks_like_simplified_chinese($_))
 } map {
     split /(?:\r?\n)+/
 } (@new_tweets, @old_tweets);

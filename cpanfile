@@ -15,3 +15,4 @@ requires 'common::sense' => 0;
 requires 'IO::All' => 0;
 requires 'JSON' => 0;
 requires 'String::Trim' => 0;
+requires 'Text::Util::Chinese' => '0.08';
