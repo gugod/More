@@ -18,6 +18,7 @@ my %remixer = ();
 
         my %lines;
         while (my $line = <FH>) {
+            next if $line =~ /^#/;
             trim($line);
             $line =~ s/\A\p{Other_Punctuation}//;
             next if $line =~ /\A\s*\z/;
