@@ -1,4 +1,4 @@
-FROM docker.io/library/perl:5.34
+FROM docker.io/library/perl:5.40
 RUN curl -fsSL --compressed https://git.io/cpm > /usr/local/bin/cpm && chmod +x /usr/local/bin/cpm
 
 WORKDIR /app
